@@ -2,12 +2,11 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Account;
+use App\Service;
 use Faker\Generator as Faker;
 
-$factory->define(Account::class, function (Faker $faker) {
+$factory->define(Service::class, function (Faker $faker) {
     return [
         //
-        'name'=>'client'
     ];
 });

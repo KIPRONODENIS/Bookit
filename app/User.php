@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 
-class User extends \TCG\Voyager\Models\User
+class User extends Authenticatable
 {
     use Notifiable;
 
@@ -16,9 +16,7 @@ class User extends \TCG\Voyager\Models\User
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password','user_type'
-    ];
+    protected $guarded = [ ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -38,27 +36,10 @@ class User extends \TCG\Voyager\Models\User
         'email_verified_at' => 'datetime',
     ];
 
-    public function services() {
-      return $this->hasMany(\App\Models\Service::class);
+    public function hotels() {
+      return $this->hasMany(\App\Hotel::class);
     }
 
-    public function invitations() {
-      return $this->hasManyThrough(\App\Invitation::class,\App\Models\Service::class);
-    }
 
-    public function accounts() {
-      return $this->belongsToMany(\App\Account::class)->withTimestamps();
-    }
-    public function events() {
-    return $this->hasMany(\App\Event::class);
-    }
 
-    /**
-     *
-     *Get all viewed services
-     *
-     */
-     public function viewedServices() {
-       return $this->morphedByMany('\App\Models\Service','likeable');
-     }
 }

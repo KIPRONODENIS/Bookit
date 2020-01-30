@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
+        'phone'=>'0799012907',
         'email' => $faker->unique()->safeEmail,
         'user_type'=>'client',
         'email_verified_at' => now(),

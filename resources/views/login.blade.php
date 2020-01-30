@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('content')
+@section('body')
 
     <div class="h-2 bg-primary"></div>
 

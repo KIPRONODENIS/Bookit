@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Hotel;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -48,12 +49,29 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
+      if($data['user_type']=="client")
+      {
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'user_type'=>['required'],
+          'name' => ['required', 'string', 'max:255'],
+          'phone' => ['required', 'string', 'max:10','min:10'],
+          'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+          'password' => ['required', 'string', 'min:8', 'confirmed'],
+          'user_type'=>['required'],
         ]);
+      }
+      else {
+        return Validator::make($data, [
+          'hotel_name' => ['required', 'string', 'max:255'],
+          'name' => ['required', 'string', 'max:255'],
+          'phone' => ['required', 'string', 'max:10','min:10'],
+          'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+          'password' => ['required', 'string', 'min:8', 'confirmed'],
+          'user_type'=>['required'],
+        ]);
+
+      }
     }
 
     /**
@@ -65,12 +83,24 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
+      $user= User::create([
+        'name' => $data['name'],
+        'phone' => $data['phone'],
+        'email' => $data['email'],
+        'user_type'=>$data['user_type'],
+        'password' => Hash::make($data['password']),
+      ]);
+if($data['user_type']=='hotel'){
+$hotel=new Hotel();
+$hotel->hotel_name=$data['hotel_name'];
+$user->hotels()->save($hotel);
+$this->redirectTo='/hotel/home';
+} else {
 
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'user_type'=>$data['user_type'],
-            'password' => Hash::make($data['password']),
-        ]);
+
+
+
+}
+return $user;
     }
 }

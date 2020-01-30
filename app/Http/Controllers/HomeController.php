@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Service;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +23,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+      $services=Service::all();
+        return view('home',compact('services'));
+    }
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function hotel()
+    {
+
+    return view('hotel');
     }
 }

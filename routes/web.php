@@ -13,19 +13,20 @@
 
 
 Route::get('/',function(){
-  return view('home');
-});
-//Route to show login form
-Route::get('/login','Auth.LoginController@showLoginForm')->name('login');
-//Route to register
-Route::get('register',function(){
 
   return view('auth.register');
 })->name('register');
-//Route to invite
+
+//Route to show login form
+Route::get('/login','Auth.LoginController@showLoginForm')->name('login');
+//Route to register
 
 //Authentication routes
 Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/hotel/home', 'HomeController@hotel')->name('hotel.index');
+
+//booking route
+Route::get('book/{service}','BookingController@bookingForm')->middleware('auth');

@@ -15,23 +15,18 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         if (User::count() == 0) {
-            $role = Role::where('name', 'admin')->firstOrFail();
+          //  $role = Role::where('name', 'admin')->firstOrFail();
 
             User::create([
-                'name'           => 'Admin',
-                'email'          => 'admin@admin.com',
-                'password'       => bcrypt('password'),
-                'remember_token' => Str::random(60),
-                'role_id'        => $role->id,
-                'user_type'=>'Vendor'
+              'name' => "admin",
+              'phone'=>'0799012907',
+              'email' => "admin@admin.com",
+              'user_type'=>'admin',
+              'email_verified_at' => now(),
+              'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+              'remember_token' => Str::random(10),
             ]);
         }
-        factory(App\User::class,4)->create()->each(function($user){ $user->services()->save(factory(\App\Models\Service::class)
-          ->create(['user_id'=>$user->id]));
-     $service=$user->services;
-     $service->each(function($service){$service->invitations()->save(factory(App\Invitation::class)->create(['service_id'=>$service->id]));});
-
-        });
 
 
     }
