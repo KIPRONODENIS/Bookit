@@ -13,7 +13,13 @@
 
 
 Route::get('/',function(){
-
+  if(\Auth::check()){
+      if(\Auth::user()->user_type=="client") {
+          return redirect()->route('home');
+      }else {
+          return redirect()->route('hotel.index');
+      }
+  }
   return view('auth.register');
 })->name('register');
 
@@ -29,4 +35,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/hotel/home', 'HomeController@hotel')->name('hotel.index');
 
 //booking route
-Route::get('book/{service}','BookingController@bookingForm')->middleware('auth');
+Route::get('book/{service}','BookingController@hotels')->middleware('auth');
+//bookking form
+Route::get('book/{service}/form','BookingController@booking')->middleware('auth');
+//bOOKING booking-success
+Route::get('/booking-success',function(){
+  return view('booking-success');
+});
