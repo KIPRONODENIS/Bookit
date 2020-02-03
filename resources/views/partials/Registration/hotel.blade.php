@@ -33,6 +33,10 @@
             @enderror
         </div>
 
+        <div class="form-group">
+            <input name="password_confirmation" type="password" class="form-control"  placeholder="Confirm Password *" value="" />
+        </div>
+
 
         <!-- <div class="form-group">
             <div class="maxl">
@@ -63,6 +67,7 @@
             @enderror
         </div>
 
+
         <div class="form-group">
             <input type="text" minlength="10" maxlength="10" name="phone" class="form-control" placeholder="Your Phone *" value="{{old('phone')}}" />
             @error('phone')
@@ -71,10 +76,23 @@
             </span>
             @enderror
         </div>
-        <div class="form-group">
-            <input name="password_confirmation" type="password" class="form-control"  placeholder="Confirm Password *" value="" />
-        </div>
 
+
+        <div class="form-group">
+          <label>Where are you located</label>
+            <select   name="location" class="form-control"  selected="{{old('location')}}" >
+<option value="" selected >None selected</option>
+<option>Nairobi</option>
+<option>Meru</option>
+<option>Makutano</option>
+<option>Maua</option>
+            </select>
+            @error('phone')
+            <span class=" text-red-800" role="alert">
+                <strong>{{ $errors->first('location')}}</strong>
+            </span>
+            @enderror
+        </div>
 
             <input type="hidden" name="user_type"  value="hotel"/>
             <input type="submit" class="btnRegister"  value="Sign Up"/>

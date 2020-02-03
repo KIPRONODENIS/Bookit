@@ -17,16 +17,17 @@ use WithPagination;
   public function mount() {
     $this->service=session('service_id');
 
-    // $this->hotels=Service::find($this->service)->hotels
-    // ->toArray();
+    $this->hotels=Service::find($this->service)->hotels
+    ->toArray();
   }
 
 public function bookthis($id) {
  return redirect()->to('/book/'.$id.'/form');
 }
 
-  public function updatesQuery() {
-  return  $this->hotels=Service::find($this->service)->hotels()
+  public function select() {
+
+$this->hotels=Service::find($this->service)->hotels()
     ->where('location','=',$this->query)
     ->get()
     ->toArray();
@@ -34,11 +35,12 @@ public function bookthis($id) {
   }
     public function render()
     {
-      $this->hotels=Service::find($this->service)->hotels()
-      ->where('location','=',$this->query)
-      ->get()
-      ->toArray();
 
-        return view('livewire.hotel-search',['hotels'=>$this->hotels]);
+      // $this->hotels=Service::find($this->service)->hotels()
+      // ->where('location','=',$this->query)
+      // ->get()
+      // ->toArray();
+
+        return view('livewire.hotel-search');
     }
 }

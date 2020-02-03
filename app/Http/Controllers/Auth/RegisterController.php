@@ -62,14 +62,22 @@ class RegisterController extends Controller
         ]);
       }
       else {
-        return Validator::make($data, [
+      $validator=Validator::make($data, [
           'hotel_name' => ['required', 'string', 'max:255'],
           'name' => ['required', 'string', 'max:255'],
+          'location'=>['required'],
           'phone' => ['required', 'string', 'max:10','min:10'],
           'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
           'password' => ['required', 'string', 'min:8', 'confirmed'],
           'user_type'=>['required'],
         ]);
+
+        if ($validator->fails()) {
+             session()->flash('hotel', "true");
+             return $validator;
+        }
+
+        return $validator;
 
       }
     }
@@ -93,6 +101,7 @@ class RegisterController extends Controller
 if($data['user_type']=='hotel'){
 $hotel=new Hotel();
 $hotel->hotel_name=$data['hotel_name'];
+$hotel->location=$data['location'];
 $user->hotels()->save($hotel);
 $this->redirectTo='/hotel/home';
 } else {

@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('body')
+
+
+
+
 <div class="container register h-screen" style="background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%); margin:0px !important;">
                 <div class="row">
                     <div class="col-md-3 register-left">
@@ -19,7 +23,7 @@
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                        
+
                         @include('partials.Registration.client')
                         @include('partials.Registration.hotel')
 
@@ -28,4 +32,15 @@
                 </div>
 
             </div>
+
+            <script>
+@if(session()->has('hotel'))
+            $('#hotel').toggleClass("active");
+            $('#client').toggleClass("active");
+            $("#home-tab").toggleClass("active");
+            $("#profile-tab").toggleClass("active");
+
+@endif
+            </script>
+
 @endsection
