@@ -10,12 +10,17 @@ class ServiceTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        Service::create(['name'=>'Gym Services','user_id'=>1])->hotels()->sync([1,2,4]);
-        Service::create(['name'=>'Room Event Reservation','user_id'=>1])->hotels()->sync([1,2,3]);
-        Service::create(['name'=>'Bed and Breakfast reservation','user_id'=>1])->hotels()->sync([1,2,3]);
-        Service::create(['name'=>'Conference & meeting','user_id'=>1])->hotels()->sync([1,2,4]);
-        Service::create(['name'=>'Logding rentals','user_id'=>1])->hotels()->sync([1,2,5]);
-        Service::create(['name'=>'Catering services','user_id'=>1])->hotels()->sync([1,2,3]);
-    }
+{
+        Service::create(['name'=>'Gym Services','user_id'=>1])->hotels()->syncWithoutDetaching([1=>[
+          'price_per_hour'=>180
+        ],2=>[
+          'price_per_hour'=>250
+        ],3=>[
+          'price_per_hour'=>100
+          ]]);
+        Service::create(['name'=>'Logding Booking','user_id'=>1]);
+        Service::create(['name'=>'Restautrant Dinner & lunch booking','user_id'=>1]);
+
+
+}
 }

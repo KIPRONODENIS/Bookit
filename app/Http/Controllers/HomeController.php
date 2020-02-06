@@ -23,8 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $services=Service::all();
-        return view('home',compact('services'));
+      $services=Service::with('hotels')->get();
+
+      return view('home',compact('services'));
     }
     /**
      * Show the application dashboard.

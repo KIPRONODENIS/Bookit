@@ -9,9 +9,5 @@
    <option value="Naivasha">Naivasha</option>
     </select>
   </div>
-@if(count($hotels)>0)
-  @foreach($hotels as $item)
-@include('partials.Home.selectcard')
-  @endforeach
-  @endif
+
 </div>

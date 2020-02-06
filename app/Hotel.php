@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Service;
+use App\Category;
 class Hotel extends Model
 {
     protected $guarded=[];
@@ -12,8 +12,15 @@ class Hotel extends Model
       return $this->belongsTo(\App\Hotel::class);
     }
 
-    public function services() {
+    public function categories() {
 
-      return $this->belongsToMany(Service::class)->withTimestamps();
+      return $this->belongsToMany(Category::class)->withTimestamps();
     }
+
+
+      public function services() {
+
+      return $this->belongsToMany(Service::class)->withPivot(['price_per_hour'])->withTimestamps();
+      }
+
 }
