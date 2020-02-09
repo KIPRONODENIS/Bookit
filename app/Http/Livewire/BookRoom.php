@@ -4,37 +4,43 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Book;
+use Carbon\Carbon;
 class BookRoom extends Component
 {
-  public $room_type;
-  public $room_number;
-  public $person_number;
-  public $child_number;
-  public $res_facilities;
+  public $fromdate;
+  public $fromtime;
+  public $todate;
+  public $totime;
+  public $service;
+  public $metric;
+  public $service_name;
+  public $price;
+  public $total;
 
+public function mount($service) {
+
+  $this->service=$service->toArray();
+
+
+  $this->service_name=$service->name;
+  $this->price=$service->pivot->price_per_hour;
+}
   public function submit(){
     $this->validate([
-            'room_type' => 'required|min:1',
-            'room_number' => 'required|min:1',
-            'person_number' => 'required|min:1',
-            'child_number' => 'required|min:1',
-            'res_facilities' => 'required',
+            'fromdate' => 'required|min:1',
+            'fromtime' => 'required|min:1',
+            'todate' => 'required|min:1',
+            'totime' => 'required|min:1',
+
 
         ]);
+$from=new Carbon($this->fromdate." ".$this->fromtime);
+$to=new Carbon($this->todate." ".$this->totime);
 
-        //after validation you can save it
+$this->metric=$to->diffInHours($from);
+$this->total=$this->metric * $this->price;
 
-     $order=Book::create([
-       'room_type' => $this->room_type,
-       'room_number' => $this->room_number,
-       'person_number' => $this->person_number,
-       'child_number' => $this->child_number,
-       'res_facilities' => $this->res_facilities
-
-
-     ]);
-
-return redirect()->to('/booking-success');
+//return redirect()->to('/booking-success');
   }
     public function render()
     {

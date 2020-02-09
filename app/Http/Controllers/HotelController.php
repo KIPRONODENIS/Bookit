@@ -28,6 +28,18 @@ class HotelController extends Controller
     }
 
     /**
+    * Display the specified resource.
+    *
+    * @param  \App\Hotel  $hotel
+    * @return \Illuminate\Http\Response
+    */
+    public function show(Hotel $hotel)
+    {
+ $services=$hotel->services;
+ return view('hotel.show',compact('hotel','services'));
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -38,16 +50,6 @@ class HotelController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Hotel  $hotel
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Hotel $hotel)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

@@ -33,11 +33,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/hotel/home', 'HomeController@hotel')->name('hotel.index');
+Route::get('/hotel/{hotel}', 'HotelController@show')->name('hotel.show');
 
 //booking route
 Route::get('book/{service}','BookingController@hotels')->middleware('auth');
 //bookking form
-Route::get('book/{service}/form','BookingController@booking')->middleware('auth');
+Route::get('book/{hotel}/form','BookingController@booking')->middleware('auth');
 //bOOKING booking-success
 Route::get('/booking-success',function(){
   return view('booking-success');

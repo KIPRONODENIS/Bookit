@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="overflow-x:hidden">
     <div id="app ">
       <nav class="navbar navbar-expand-lg  text-white" style="background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);">
         <a class="navbar-brand" href="#">Bookit.com</a>

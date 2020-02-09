@@ -1,13 +1,13 @@
 
 
-<div class="card hovercard col-3 mx-3 my-3 " id="selectcard" key="{{$hotel['id']}}">
+<div class="card hovercard col-3 mx-3 my-3 " id="selectcard" >
     <div class="cardheader">
 
     </div>
 
     <div class="info" >
         <div class="title">
-            <a target="_blank" class="h4" href="https://scripteden.com/">
+            <a  class="h4" href="/hotel/{{$hotel->id}}">
 {{$hotel->hotel_name}}</a>
         </div>
         <div class="desc d-flex "><img class="bg-blue-700 text-white" src="/icons/location_city.svg"/>{{$hotel->location}}</div>
@@ -19,7 +19,7 @@
           Learn More
         </a> -->
         <a class="btn btn-danger btn-sm" rel="publisher"
-          href="/book/{{$hotel['id']}}/form">
+          href="/book/{{$hotel->id}}/form">
         Book this
         </a>
         <!-- <a href="/book/{{$hotel['id']}}/form" class="btn btn-warning btn-sm shadow-sm" rel="publisher" wire:click="bookthis({{$hotel['id']}})">
