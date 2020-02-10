@@ -25,15 +25,18 @@
         @error('totime')<span style="color:red">{{$message}}</span>  @enderror
       </span>
   <span class=" mx-2 w-2/5">
-  <input type="time" wire:model="totime" class="form-control" name="totime" >
+  <input type="time" value="{{old('totime') }}" wire:model="totime" class="form-control" name="totime" >
         @error('totime')<span style="color:red">{{$message}}</span>  @enderror
 </span>
     </div>
     </div>
-<h1>Your Total: {{$total}}<h1>
+<h1 class="bold h1">Your Total:Kshs. {{$total}}<h1>
 <div class="form-group">
+  <div class="btn btn-danger " wire:click="total()">Total</div>
   <input type="submit" class="btn btn-primary" name="submit" value="Book Now !!">
 </div>
     </form>
-
+@if($submit=="true")
+  <div>{{1+1}}</div>
+@endif
 </div>

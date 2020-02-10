@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Book;
 use Carbon\Carbon;
+use App\Order;
 class BookRoom extends Component
 {
   public $fromdate;
@@ -16,14 +17,24 @@ class BookRoom extends Component
   public $service_name;
   public $price;
   public $total;
-
-public function mount($service) {
+  public $submit="false";
+  public $hotel;
+public function mount($service,$hotel) {
 
   $this->service=$service->toArray();
-
+  $this->hotel=$hotel->toArray();
 
   $this->service_name=$service->name;
   $this->price=$service->pivot->price_per_hour;
+}
+
+
+public function total() {
+  $from=new Carbon($this->fromdate." ".$this->fromtime);
+  $to=new Carbon($this->todate." ".$this->totime);
+
+  $this->metric=$to->diffInHours($from);
+  return $this->total=$this->metric * $this->price;
 }
   public function submit(){
     $this->validate([
@@ -34,13 +45,18 @@ public function mount($service) {
 
 
         ]);
-$from=new Carbon($this->fromdate." ".$this->fromtime);
-$to=new Carbon($this->todate." ".$this->totime);
+        $this->submit="true";
 
-$this->metric=$to->diffInHours($from);
-$this->total=$this->metric * $this->price;
+//create a new order
+$order=Order::Create([
+'user_id'=>\Auth::id(),
+  'service_id'=>$this->service['id'],
+'hotel_id'=>$this->hotel['id'],
+'total'=>$this->total
+]);
 
-//return redirect()->to('/booking-success');
+session()->put('order',$order);
+return redirect()->to('/booking-success');
   }
     public function render()
     {

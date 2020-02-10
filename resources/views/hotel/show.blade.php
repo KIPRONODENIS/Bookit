@@ -15,14 +15,14 @@
   @foreach($services as $service)
  <div class=" col-3 card mx-4 py-2 shadow-sm">
 <h4 class="text-md text-gray-500">{{$service->name}}</h4>
-<p class="my-2 ">Ksh. {{$service->pivot->price_per_hour}}/{{"hour"}}</p>
+<p class="my-2 ">Ksh. {{$service->pivot->price_per_hour}}/{{$service->per}}</p>
 
 <div class="bottom my-3 text-left">
     <!-- <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
       Learn More
     </a> -->
     <a class="btn btn-danger btn-sm" rel="publisher"
-      href="/hotel/{{$hotel->id}}/book/{{$service->id}}/form">
+      href="/hotel/{{$hotel->id}}/book/{{$service->id}}">
     Book this
     </a>
     <!-- <a href="/book/{{$hotel['id']}}/form" class="btn btn-warning btn-sm shadow-sm" rel="publisher" wire:click="bookthis({{$hotel['id']}})">

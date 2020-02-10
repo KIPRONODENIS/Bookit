@@ -17,6 +17,7 @@ class CreateServicesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->unsignedBigInteger('user_id');
+            $table->string('per')->default('hour');
             $table->timestamps();
         });
     }

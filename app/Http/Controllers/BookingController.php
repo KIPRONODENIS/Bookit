@@ -17,10 +17,22 @@ class BookingController extends Controller
       return view('hotels',compact('hotels','service'));
     }
 
-    public function booking(Hotel $hotel) {
+    public function booking(Hotel $hotel,Service $service) {
   //we need that specific service by hotel
 $service=$hotel->services()->find(session('service_id'));
 
-      return view('booking_form',compact('service'));
+      return view('booking_form',compact('service','hotel'));
+    }
+
+
+
+    public function success() {
+      $order=session('order');
+      return view('booking-success',compact('order'));
+    }
+//once the user has payed
+    public function payed() {
+
+      return view('paid');
     }
 }

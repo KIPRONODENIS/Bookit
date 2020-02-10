@@ -12,14 +12,17 @@ class ServiceTableSeeder extends Seeder
     public function run()
 {
         Service::create(['name'=>'Gym Services','user_id'=>1])->hotels()->syncWithoutDetaching([1=>[
-          'price_per_hour'=>180
+          'price_per_hour'=>180,
+
         ],2=>[
-          'price_per_hour'=>250
+          'price_per_hour'=>250,
+
         ],3=>[
-          'price_per_hour'=>100
+          'price_per_hour'=>100,
+
           ]]);
         Service::create(['name'=>'Logding Booking','user_id'=>1]);
-        Service::create(['name'=>'Restautrant Dinner & lunch booking','user_id'=>1]);
+        Service::create(['name'=>'Restautrant Dinner & lunch booking','user_id'=>1,'per'=>'person']);
 
 
 }

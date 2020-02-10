@@ -38,8 +38,8 @@ Route::get('/hotel/{hotel}', 'HotelController@show')->name('hotel.show');
 //booking route
 Route::get('book/{service}','BookingController@hotels')->middleware('auth');
 //bookking form
-Route::get('book/{hotel}/form','BookingController@booking')->middleware('auth');
+Route::get('hotel/{hotel}/book/{service}','BookingController@booking')->middleware('auth');
 //bOOKING booking-success
-Route::get('/booking-success',function(){
-  return view('booking-success');
-});
+Route::get('/booking-success','BookingController@success');
+
+Route::get('/payed','BookingController@payed');

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Service;
 class HotelTableSeeder extends Seeder
 {
     /**
@@ -12,8 +12,9 @@ class HotelTableSeeder extends Seeder
     public function run()
     {
         factory(\App\Hotel::class,5)->create()->each(function($hotel){
-          $hotel->services()->syncWithoutDetaching([1=>[
-            'price_per_hour'=>200
+          $hotel->services()->syncWithoutDetaching([Service::find(1)->id=>[
+            'price_per_hour'=>200,
+            
           ],2=>[
             'price_per_hour'=>250
           ],3=>[
