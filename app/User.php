@@ -36,8 +36,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function hotels() {
-      return $this->hasMany(\App\Hotel::class);
+    public function hotel() {
+      return $this->hasOne(\App\Hotel::class);
     }
 
     public function orders() {

@@ -4,7 +4,6 @@
 <header>
   <div class="overlay"></div>
 
-
   <div class="container h-screen" style="background:url('/images/bg.jpg');background-position:center;">
     <div class="d-flex h-100 text-center align-items-center">
       <div class="w-100 text-white">
@@ -12,9 +11,17 @@
 
         <p class="lead mb-0"> A platform to Book A service From Any Hotel</p>
         @guest
-        <a  href="route('register')" class="btn btn-primary btn-lg shadow my-3" >Create an Account</a>
+        <a  href="{{route('register')}}" class="btn btn-primary btn-lg shadow my-3" >Create an Account</a>
        @else
-       <a href="{{route('home')}}" class="btn btn-primary btn-lg shadow my-3" >Dashboard</a>
+       @php
+if(Auth::user()->user_type =="hotel"){
+  $route=route('hotel.index');
+}else {
+    $route=route('home');
+}
+
+       @endphp
+       <a href="{{$route}}" class="btn btn-primary btn-lg shadow my-3" >Dashboard</a>
 
         @endguest
       </div>

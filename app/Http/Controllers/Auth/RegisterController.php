@@ -62,6 +62,7 @@ class RegisterController extends Controller
         ]);
       }
       else {
+           session()->flash('hotel', "true");
       $validator=Validator::make($data, [
           'hotel_name' => ['required', 'string', 'max:255'],
           'name' => ['required', 'string', 'max:255'],
@@ -70,7 +71,9 @@ class RegisterController extends Controller
           'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
           'password' => ['required', 'string', 'min:8', 'confirmed'],
           'user_type'=>['required'],
+          'image'=>['required']
         ]);
+
 
         if ($validator->fails()) {
              session()->flash('hotel', "true");
@@ -102,6 +105,7 @@ if($data['user_type']=='hotel'){
 $hotel=new Hotel();
 $hotel->hotel_name=$data['hotel_name'];
 $hotel->location=$data['location'];
+$hotel->image=$data['image']->store('images',['disk'=>'public']);
 $user->hotels()->save($hotel);
 $this->redirectTo='/hotel/home';
 } else {

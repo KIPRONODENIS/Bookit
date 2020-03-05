@@ -1,4 +1,4 @@
-<form method="post" action="/register"  class="tab-pane fade   show" id="hotel" role="tabpanel" aria-labelledby="profile-tab">
+<form method="post" action="/register" enctype="multipart/form-data" class="tab-pane fade   show"  id="hotel" role="tabpanel" aria-labelledby="profile-tab">
 @csrf
 <h3 class="register-heading">Apply as Hotel Owner</h3>
 
