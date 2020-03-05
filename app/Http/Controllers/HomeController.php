@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Service;
+use App\Order;
 class HomeController extends Controller
 {
     /**
@@ -24,8 +25,8 @@ class HomeController extends Controller
     public function index()
     {
       $services=Service::with('hotels')->get();
-
-      return view('home',compact('services'));
+      $orders=\Auth::user()->orders()->with('hotel','service')->get();
+      return view('home',compact('services','orders'));
     }
     /**
      * Show the application dashboard.

@@ -39,9 +39,9 @@ public function total() {
   public function submit(){
     $this->validate([
             'fromdate' => 'required|min:1',
-            'fromtime' => 'required|min:1',
+        
             'todate' => 'required|min:1',
-            'totime' => 'required|min:1',
+
 
 
         ]);
@@ -52,7 +52,10 @@ $order=Order::Create([
 'user_id'=>\Auth::id(),
   'service_id'=>$this->service['id'],
 'hotel_id'=>$this->hotel['id'],
-'total'=>$this->total
+'total'=>$this->total,
+'from'=>new Carbon($this->fromdate." ".$this->fromtime),
+'to'=>new Carbon($this->todate." ".$this->totime)
+
 ]);
 
 session()->put('order',$order);

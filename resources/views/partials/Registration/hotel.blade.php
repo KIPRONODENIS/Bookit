@@ -38,23 +38,17 @@
         </div>
 
 
-        <!-- <div class="form-group">
+        <div class="form-group">
             <div class="maxl">
-                <label class="radio inline">
-                    <input type="radio" name="gender" value="male" {{old('gender')=='male'?"checked":''}}>
-                    <span class="font-bold"> Male </span>
-                </label>
-                <label class="radio inline">
-                    <input type="radio" name="gender" value="female" {{old('gender')=='female'?"checked":''}}>
-                    <span class="font-bold">Female </span>
-                </label>
+            <label>Upload image</label>
+            <input type="file" name="image">
             </div>
-            @error('gender')
+            @error('image')
             <span class=" text-red-800" role="alert">
-                <strong>{{ $errors->first('gender')}}</strong>
+                <strong>{{ $errors->first('image')}}</strong>
             </span>
             @enderror
-        </div> -->
+        </div>
 
     </div>
     <div class="col-md-6">
@@ -93,7 +87,7 @@
             </span>
             @enderror
         </div>
-
+<div class="h-10"></div>
             <input type="hidden" name="user_type"  value="hotel"/>
             <input type="submit" class="btnRegister"  value="Sign Up"/>
         </div>

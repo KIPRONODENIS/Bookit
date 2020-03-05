@@ -32,6 +32,8 @@ $service=$hotel->services()->find(session('service_id'));
     }
 //once the user has payed
     public function payed() {
+      $order=session('order');
+     $order->update(['paid'=>true]);
 
       return view('paid');
     }

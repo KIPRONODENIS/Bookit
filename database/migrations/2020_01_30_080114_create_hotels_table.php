@@ -17,6 +17,7 @@ class CreateHotelsTable extends Migration
             $table->bigIncrements('id');
             $table->string('hotel_name');
             $table->string('location')->nullable();
+            $table->string('image')->default('Optimized-catering.jpg');
             $table->string('user_id');
             $table->timestamps();
         });

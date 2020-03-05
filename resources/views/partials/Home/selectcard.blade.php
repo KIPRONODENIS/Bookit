@@ -1,29 +1,20 @@
 
 
-<div class="card hovercard col-3 mx-3 my-3 " id="selectcard" >
-    <div class="cardheader">
 
-    </div>
+  <div class="col-3 px-3 mb-3">
+      <div class="cnt-block equal-hight border-red-500 border-1 rounded shadow bg-white" >
+        <figure><img src="{{asset('/images/bg.jpg')}}" class="img-responsive" alt="" style="height:250px !important;"></figure>
+        <h3 class="h2 mx-2"><a href="http://www.webcoderskull.com/" style="color:#fc4a1a">{{$hotel->hotel_name}}</a></h3>
 
-    <div class="info" >
-        <div class="title">
-            <a  class="h4" href="/hotel/{{$hotel->id}}">
-{{$hotel->hotel_name}}</a>
-        </div>
-        <div class="desc d-flex "><img class="bg-blue-700 text-white" src="/icons/location_city.svg"/>{{$hotel->location}}</div>
-        <div class="desc">{{$service->name}}</div>
-        <div class="desc">Ksh {{$hotel->pivot->price_per_hour}}/{{$service->per}}</div>
-    </div>
-    <div class="bottom my-3 text-left">
-        <!-- <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
-          Learn More
-        </a> -->
-        <a class="btn btn-danger btn-sm" rel="publisher"
-          href="/hotel/{{$hotel->id}}/book/{{$service->id}}">
-        Book this
-        </a>
-        <!-- <a href="/book/{{$hotel['id']}}/form" class="btn btn-warning btn-sm shadow-sm" rel="publisher" wire:click="bookthis({{$hotel['id']}})">
-          Book this
-        </a> -->
-    </div>
-</div>
+      <div class="desc mx-2 text-xl text-gray-800">{{$service->name}}</div>
+           <div class='spacer h-5'></div>
+  <div class="desc mx-2">Ksh {{$hotel->pivot->price_per_hour}}/{{$service->per}}</div>
+        <div class='spacer h-5'></div>
+       <div class="mx-2 flex justify-between">
+           <h3 class="mx-2 font-bold text-xl my-2 text-green-500"><span class="fas fa-map-pin">{{$hotel->location}}</span></h3>
+         <a class="btn  btn-primary  shadow-sm " href="/hotel/{{$hotel->id}}/book/{{$service->id}}" class="text-blue-500">Book</a>
+
+       </div>
+         <div class='spacer h-5'></div>
+      </div>
+  </div>

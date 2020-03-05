@@ -32,4 +32,8 @@ public function update(Request $request) {
   return response()->json(['message'=>$message]);
 }
 
+
+public function profile() {
+  return view('profile');
+}
 }

@@ -1,3 +1,4 @@
+
 <?php
 
 /*
@@ -11,8 +12,8 @@
 |
 */
 
-
-Route::get('/',function(){
+Route::get('/','WelcomeController@index');
+Route::get('/register',function(){
   if(\Auth::check()){
       if(\Auth::user()->user_type=="client") {
           return redirect()->route('home');
@@ -36,10 +37,14 @@ Route::get('/hotel/home', 'HomeController@hotel')->name('hotel.index');
 Route::get('/hotel/{hotel}', 'HotelController@show')->name('hotel.show');
 
 //booking route
-Route::get('book/{service}','BookingController@hotels')->middleware('auth');
+Route::get('book/{service}','BookingController@hotels')->middleware('auth')->name('service.hotels');
 //bookking form
 Route::get('hotel/{hotel}/book/{service}','BookingController@booking')->middleware('auth');
 //bOOKING booking-success
 Route::get('/booking-success','BookingController@success');
 
 Route::get('/payed','BookingController@payed');
+
+//Route to your profiel
+
+Route::get('profile','UserController@profile')->name('profile');

@@ -9,8 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" ></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,7 +20,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 <body style="overflow-x:hidden">
-    <div id="app ">
+    <div id="app">
       <nav class="navbar navbar-expand-lg  text-white" style="background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);">
         <a class="navbar-brand" href="#">Bookit.com</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,5 +85,10 @@
         </main>
     </div>
 
+    <div class="footer border-t py-2">
+<div class="col-8 mx-auto font-black text-center" >&copy; copyright 2020. Made by Steve Kiplang'at finalYear Project</div>
+     </div>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" ></script>
 </body>
 </html>

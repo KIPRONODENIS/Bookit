@@ -18,7 +18,11 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('hotel_id');
             $table->unsignedBigInteger('service_id');
-             $table->integer('total');
+            $table->datetime('from');
+            $table->datetime('to');
+            $table->integer('total');
+            $table->string('status')->default('pending');
+            $table->boolean('paid')->default(false);
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ class HotelTableSeeder extends Seeder
         factory(\App\Hotel::class,5)->create()->each(function($hotel){
           $hotel->services()->syncWithoutDetaching([Service::find(1)->id=>[
             'price_per_hour'=>200,
-            
+
           ],2=>[
             'price_per_hour'=>250
           ],3=>[
