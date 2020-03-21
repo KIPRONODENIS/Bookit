@@ -2,6 +2,7 @@
 
 @section('body')
 <div class="container w-3/4 mt-4">
+
   <div class="card">
    <div class="card-header bg-white">
 Dashboard <a href="{{route('profile')}}" class=" text-blue-500 text-md float-right"> View Profile</a>
@@ -39,6 +40,19 @@ Dashboard <a href="{{route('profile')}}" class=" text-blue-500 text-md float-rig
    <div class="alert alert-info">You have no orders yet</div>
    @endif
    </div>
+  </div>
+
+      <div class=" pt-5 w-full">
+    <h1 class="h3">New Messages</h1>
+    @if($chats->count()>0)
+    <ul class="list-group shadow text-center ">
+      @foreach($chats as $chat)
+      <li class="text-left list-group-item hover:bg-green-200 focus:bg-blue-400"><a href="{{route('hotel.show',$chat->senderH->id ?? '')}}">{{$chat->senderH->hotel_name}}</a><span class="badge badge-danger">{{$chat->total}}</span></li>
+      @endforeach
+    </ul>
+    @else
+<div class="alert alert-success">No chats Yet</div>
+    @endif
   </div>
   <div class="shadow rounded p-2 mt-3">
   <h1 class="h2 text-orange-500 my-3">Select a service to Book</h1>

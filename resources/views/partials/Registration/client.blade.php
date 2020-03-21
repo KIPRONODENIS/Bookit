@@ -49,7 +49,14 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Your Email *" value="{{old('email')}}" />
+                <input type="text" class="form-control" 
+                name="email" 
+                placeholder="Your Email *" 
+
+                value="{{old('email')}}"
+
+          
+                 required />
                 @error('email')
                 <span class=" text-red-800" role="alert">
                     <strong>{{ $errors->first('email')}}</strong>
@@ -58,7 +65,7 @@
             </div>
 
             <div class="form-group">
-                <input type="text" minlength="10" maxlength="10" name="phone" class="form-control" placeholder="Your Phone *" value="{{old('phone')}}" />
+                <input type="text" minlength="10" maxlength="10" name="phone" class="form-control" placeholder="Your Phone *" value="{{old('phone')}}" required pattern='^0\d{9}'/>
                 @error('phone')
                 <span class=" text-red-800" role="alert">
                     <strong>{{ $errors->first('phone')}}</strong>

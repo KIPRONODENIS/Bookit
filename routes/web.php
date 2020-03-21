@@ -35,9 +35,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/hotel/home', 'HomeController@hotel')->name('hotel.index');
 Route::get('/hotel/{hotel}', 'HotelController@show')->name('hotel.show');
-
+Route::get('/messages/hotel/{user?}', 'HotelController@messages')->name('hotel.messages');
+Route::put('/hotel/profile','HotelController@profile')->name('hotel.update');
+Route::post('/hotel/new','HotelController@store')->name('hotel.store');
+Route::get('/hotel-orders','HotelController@orders')->name('hotel.orders')->middleware('auth');
 //booking route
 Route::get('book/{service}','BookingController@hotels')->middleware('auth')->name('service.hotels');
+
+Route::post('service/rate','HotelController@rate')->name('service.rate')->middleware('auth');
 //bookking form
 Route::get('hotel/{hotel}/book/{service}','BookingController@booking')->middleware('auth');
 //bOOKING booking-success

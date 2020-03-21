@@ -18,8 +18,9 @@ class BookingController extends Controller
     }
 
     public function booking(Hotel $hotel,Service $service) {
+
   //we need that specific service by hotel
-$service=$hotel->services()->find(session('service_id'));
+$service=$hotel->services()->find(session('service_id',$service->id));
 
       return view('booking_form',compact('service','hotel'));
     }

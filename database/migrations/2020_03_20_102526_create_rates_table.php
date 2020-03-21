@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class HotelServiceTable extends Migration
+class CreateRatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class HotelServiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('hotel_service', function (Blueprint $table) {
+        Schema::create('rates', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('hotel_id');
-            $table->unsignedBigInteger('service_id');
-            $table->integer('price_per_hour');
-            $table->string('image')->default('Optimized-catering.jpg');
+            $table->bigInteger('user_id');
+            $table->bigInteger('service_id');
+            $table->bigInteger('rate');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class HotelServiceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hotel_service');
+        Schema::dropIfExists('rates');
     }
 }

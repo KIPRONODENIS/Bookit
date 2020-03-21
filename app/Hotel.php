@@ -20,7 +20,11 @@ class Hotel extends Model
 
       public function services() {
 
-      return $this->belongsToMany(Service::class)->withPivot(['price_per_hour'])->withTimestamps();
+      return $this->belongsToMany(Service::class)->withPivot(['price_per_hour','image'])->withTimestamps();
+      }
+
+      public function orders() {
+        return $this->hasMany(\App\Order::class,'hotel_id');
       }
 
 }

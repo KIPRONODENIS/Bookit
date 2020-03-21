@@ -58,7 +58,8 @@ if(Auth::user()->user_type =="hotel"){
 
             <div class='spacer h-5'></div>
            <div class="mx-2 flex justify-between">
-               <h3 class="mx-2 font-bold text-xl my-2 text-green-500"><span class="fas fa-map-pin">{{$hotel->location}}</span></h3>
+               <h3 class="mx-2 font-bold text-xl my-2 text-green-500"><span class=" text-green-500 fa fa-map-marker">
+                {{$hotel->location}}</span></h3>
              <a class="btn btn-primary  " href="{{route('hotel.show',$hotel->id)}}" class="text-blue-500">View</a>
 
            </div>
@@ -89,6 +90,7 @@ if(Auth::user()->user_type =="hotel"){
 
          <ul class="row flex flex-wrap justify-around list-unstyled">
            @foreach($services as $service)
+           @if($service->hotels->count()>0)
       <li class="col-4 px-3 ">
           <div class="cnt-block equal-hight border-red-500 border-1 rounded shadow px-3 w-full" >
             <figure><img src="{{asset('images/Optimized-catering.jpg')}}" class="img-responsive card-img-top w-full" alt="" ></figure>
@@ -103,6 +105,7 @@ if(Auth::user()->user_type =="hotel"){
            </div>
           </div>
       </li>
+      @endif
           @endforeach
 
     </ul>

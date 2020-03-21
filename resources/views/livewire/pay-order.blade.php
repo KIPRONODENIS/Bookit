@@ -8,7 +8,7 @@
           <p class="text-sm py-3">Make your PAYMENT to COMPLETE the Transaction</p>
 
           <form wire:submit.prevent="submit">
-      <input type="text" name="phone" wire:model="phone" style="line-height:4em;font-size:22px;z-index:1;" class="my-4 form-control w-full shadow" placeholder="0799012907">
+      <input type="text" name="phone" wire:model="phone" style="line-height:4em;font-size:22px;z-index:1;" class="my-4 form-control w-full shadow" placeholder="0799012907" required pattern='^07\d{8}'>
         @error('phone')
         <p class="text-red-500">{{$message}}</p>
 

@@ -17,7 +17,7 @@
 
 
         <div class="form-group">
-            <input type="text" name="hotel_name" class="form-control" placeholder="Name of the Hotel *" />
+            <input type="text" name="hotel_name" class="form-control" placeholder="Name of the Hotel *" value="{{old('hotel_name')}}"/>
             @error('hotel_name')
             <span class=" text-red-800" role="alert">
                 <strong>{{ $errors->first('hotel_name')}}</strong>
@@ -63,7 +63,7 @@
 
 
         <div class="form-group">
-            <input type="text" minlength="10" maxlength="10" name="phone" class="form-control" placeholder="Your Phone *" value="{{old('phone')}}" />
+            <input type="text" minlength="10" maxlength="10" name="phone" class="form-control" placeholder="Your Phone *" value="{{old('phone')}}" required pattern='^0\d{9}'/>
             @error('phone')
             <span class=" text-red-800" role="alert">
                 <strong>{{ $errors->first('phone')}}</strong>

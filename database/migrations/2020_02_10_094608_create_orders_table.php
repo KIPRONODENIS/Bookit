@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->datetime('from');
             $table->datetime('to');
             $table->integer('total');
-            $table->string('status')->default('pending');
+            $table->string('status')->default('booked');
             $table->boolean('paid')->default(false);
             $table->timestamps();
         });

@@ -18,6 +18,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('/font-awesome/css/font-awesome.css')}}">
 </head>
 <body style="overflow-x:hidden">
     <div id="app">
@@ -38,6 +39,16 @@
               <a class="nav-link" href="/contact">Contact</a>
 
             </li>
+              <li class="nav-item">
+            <a class="block   lg:inline-block lg:mt-0 text-blue-500 text-xl hover:text-white " style="color:#ff0066 !important">
+  <div class="absolute" style="z-index: 4; margin-top: -20px !important">
+@livewire('search')
+</div>
+</a>
+
+            </li>
+
+
           </ul>
           <!-- Right Side Of Navbar -->
           <ul class="navbar-nav ml-auto ">
@@ -57,8 +68,8 @@
                           {{ Auth::user()->name }} <span class="caret"></span>
                       </a>
 
-                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="{{ route('logout') }}"
+                      <div class="" aria-labelledby="navbarDropdown">
+                          <a class="" href="{{ route('logout') }}"
                              onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">
                               {{ __('Logout') }}
@@ -90,5 +101,8 @@
      </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" ></script>
+    @include('sweetalert::alert')
+    @livewireAssets
+
 </body>
 </html>
