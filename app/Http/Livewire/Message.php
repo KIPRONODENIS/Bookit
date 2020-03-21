@@ -27,6 +27,11 @@ Chat::whereRaw('(sender_id='.$this->hotel.' AND receiver_id='.Auth::user()->hote
 
 		$this->messages= Chat::whereRaw('(sender_id='.$this->hotel.' AND receiver_id='.Auth::id().') or (sender_id='.Auth::id().' and receiver_id='.$this->hotel.')')->get()->toArray();
 
+  Chat::whereRaw('(sender_id='.$this->hotel.' AND receiver_id='.Auth::id().') or (sender_id='.Auth::id().' and receiver_id='.$this->hotel.')')->get()->each(function($chat){
+	$chat->read=true;
+    $chat->save();
+});
+
 		}
 	}
 

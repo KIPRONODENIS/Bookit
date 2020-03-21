@@ -52,7 +52,7 @@ if(Auth::user()->user_type =="hotel"){
       <li class="col-4 px-3 mb-3">
           <div class="cnt-block equal-hight border-red-500 border-1 rounded shadow bg-white" >
             <figure><img src="{{asset('storage/'.$hotel->image)}}" class="img-responsive" alt="" style="height:250px !important;"></figure>
-            <h3 class="h2 mx-2"><a href="http://www.webcoderskull.com/" style="color:#fc4a1a">{{$hotel->hotel_name}}</a></h3>
+            <h3 class="h2 mx-2"><a href="{{route('hotel.show',$hotel->id)}}" style="color:#fc4a1a">{{$hotel->hotel_name}}</a></h3>
             <p class="mx-2">{{$hotel->services->count()}} service(s)</p>
 
 
