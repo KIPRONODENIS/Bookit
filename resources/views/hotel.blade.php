@@ -5,12 +5,17 @@
   <div class="bg-white row flex  my-3 justify-between shadow">
 <img class="image-responsive shadow" height="150" width="200" src="{{asset('storage/'.Auth::user()->hotel->image)}}">
 <div class="card w-1/2 bg-gray- p-3">
-<h1 class="h3" style="color:#fc4a1a">{{Auth::user()->hotel->hotel_name}}</h1>
+<h1 class="h3" style="color:#fc4a1a">{{Auth::user()->hotel->hotel_name}}
+
+<div class="card float-right text-gray-700 flex flex-wrap">Total Earnings
+<h4>ksh. {{Auth::user()->hotel->total()}}</h4>
+<a href="{{route('hotel.account')}}" class="btn btn-primary" >View</a>
+</div></h1>
 
 <p class="h4 text-green-500 my-2">{{Auth::user()->hotel->services->count()}} Service(s) </p>
 <div class="flex">
-<a class="text-primary mt-1  mx-2" href="{{route('hotel.orders')}}">Orders <span class="badge badge-success">3</span></a>
-<a class="text-primary mt-1  " href="{{route('hotel.messages')}}">Messages <span class="badge badge-danger">3</span></a>
+<a class="text-primary mt-1  mx-2" href="{{route('hotel.orders')}}">Orders <span class="badge badge-success">{{Auth::user()->hotel->orders->count()}}</span></a>
+<a class="text-primary mt-1  " href="{{route('hotel.messages')}}">Messages <span class="badge badge-danger">{{Auth::user()->hotel->messages->count()}}</span></a>
 </div>
 <div class="flex justify-between">
 <a class="text-white btn btn-primary mt-5 "  data-toggle="modal" data-target="#edit_hotel" >Edit</a>
@@ -89,6 +94,7 @@
 
   </div>
 </div>
+
 <!-- Modal -->
 <div id="edit_hotel" class="modal fade" role="dialog">
   <div class="modal-dialog">

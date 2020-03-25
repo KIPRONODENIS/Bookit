@@ -30,13 +30,12 @@
 </span>
     </div>
     </div>
+    <h1 class="font-bold text-green-600">Commmission Fee:Kshs. {{$charge}}<h1>
 <h1 class="bold h1">Your Total:Kshs. {{$total}}<h1>
 <div class="form-group">
   <div class="btn btn-danger " wire:click="total()">Total</div>
   <input type="submit" class="btn btn-primary" name="submit" value="Book Now !!">
 </div>
     </form>
-@if($submit=="true")
-  <div>{{1+1}}</div>
-@endif
+
 </div>

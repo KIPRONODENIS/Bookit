@@ -12,12 +12,14 @@
 
 <div class="row flex flex-wrap">
   <div class="col-4 p-2">
+    @auth
 @livewire('message',$hotel->id,'user')
+@endauth
   </div>
   <div class="col-8 flex flex-wrap">
       <h1 class="text-4xl border-red-100 border-t-none text-center text-teal-500 w-full">Our Services</h1>
   @foreach($services as $service)
- <div class=" col-3 card mx-4 py-2 h-50 shadow-sm">
+ <div class=" col-3 card mx-4 py-2 shadow-sm">
 <h4 class="text-md text-gray-500">{{$service->name}}</h4>
 <p class="my-2 ">Ksh. {{$service->pivot->price_per_hour}}/{{$service->per}}</p>
 

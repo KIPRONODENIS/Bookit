@@ -16,6 +16,7 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('deleted_at')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->string('per')->default('hour');
             $table->timestamps();

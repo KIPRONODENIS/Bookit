@@ -49,4 +49,8 @@ return Chat::where('sender_id',$this->id)->orWhere('receiver_id',$this->id);
    }
 
 
+             public function deductions() {
+        return $this->hasMany(\App\Revenue::class,'user_id')->sum('amount');
+      }
+
 }

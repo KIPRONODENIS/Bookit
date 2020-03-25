@@ -15,4 +15,8 @@ class Service extends Model
     public function categories() {
       return $this->belongsTo(\App\Category::class);
     }
+
+    public function orders(){
+    	return $this->hasMany(\App\Order::class);
+    }
 }

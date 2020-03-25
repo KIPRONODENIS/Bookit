@@ -27,4 +27,19 @@ class Hotel extends Model
         return $this->hasMany(\App\Order::class,'hotel_id');
       }
 
+            public function total() {
+        return $this->hasMany(\App\Order::class,'hotel_id')->sum('total');
+      }
+
+
+     
+
+
+            public function withdrawn() {
+        return $this->hasMany(\App\Withdarawal::class,'hotel_id')->sum('amount');
+      }
+      public function messages() {
+        return $this->hasMany(\App\Chat::class,'sender_id')->where('read','=',false);
+      }
+
 }

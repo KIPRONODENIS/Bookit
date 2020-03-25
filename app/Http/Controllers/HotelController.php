@@ -11,6 +11,7 @@ use App\Rate;
 use App\Chat;
 use DB;
 use App\User;
+use App\Withdarawal;
 class HotelController extends Controller
 {
     /**
@@ -161,6 +162,13 @@ public function messages( $user=''){
         $id=0;
       }
     return view('hotel.messages',compact('categories','chats','id'));
+}
+
+
+public function account() {
+     $categories=Service::all();
+     $withdrawals=Withdarawal::all();
+    return view('hotel.account',compact('categories','withdrawals'));
 }
     
 }

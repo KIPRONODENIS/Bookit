@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Book;
 use Carbon\Carbon;
 use App\Order;
+use App\Revenue;
 class BookRoom extends Component
 {
   public $fromdate;
@@ -19,6 +20,7 @@ class BookRoom extends Component
   public $total;
   public $submit="false";
   public $hotel;
+  public $charge=150;
 public function mount($service,$hotel) {
 
   $this->service=$service->toArray();
@@ -57,6 +59,12 @@ $order=Order::Create([
 'to'=>new Carbon($this->todate." ".$this->totime)
 
 ]);
+
+$revenue=Revenue::create([
+            'user_id'=>\Auth::id(),
+            'amount'=>$this->charge,
+            'description'=>'commission fee'
+        ]);
 
 session()->put('order',$order);
 return redirect()->to('/booking-success');

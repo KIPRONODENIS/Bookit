@@ -43,6 +43,15 @@ class LoginController extends Controller
     }
 
     public function redirectTo(){
-  return  \App\User::where('email',request()->email)->first()->user_type=='hotel'?'/hotel/home':'/home';
+        if(\App\User::where('email',request()->email)->first()->user_type=='hotel') {
+          return  '/hotel/home';
+          
+        }elseif(\App\User::where('email',request()->email)->first()->user_type=='admin') {
+            return '/admin';
+        }
+        else {
+  return  '/home';
+        }
+
     }
 }
