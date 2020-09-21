@@ -21,6 +21,8 @@
      <link href="{{ asset('css/app.css') }}" rel="stylesheet">
      <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
        <link rel="stylesheet" type="text/css" href="{{asset('/font-awesome/css/font-awesome.css')}}">
+         <!-- Bootstrap core CSS -->
+  <link href="{{asset('/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
      
 <link href="{{asset('css/app.css')}}" rel="stylesheet">
   <!-- Bootstrap core CSS -->

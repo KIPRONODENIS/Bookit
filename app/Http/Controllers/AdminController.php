@@ -151,7 +151,7 @@ $_6months=[
 
 ];
 
-  $oneyear=Carbon::now()->subMonths(6);
+  $oneyear=Carbon::now()->subMonths(12);
   //users 
   $users6year=User::where('created_at','>',$oneyear)->count();
   //

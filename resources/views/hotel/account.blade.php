@@ -48,8 +48,8 @@
       </div>
     </div>
   </div>
-</div>
 
+</form>
  @endif
 			</h4></div>
 	</div>
@@ -72,6 +72,6 @@
        @endforeach
 		@endif
 	</table>
-</form>
+</div>
 
 @endsection

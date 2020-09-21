@@ -105,6 +105,7 @@
 				<td>{{$user->name}}</td>
 				<td>{{$user->email}}</td>
 				<td>{{$user->user_type}}</td>
+
 				<td class="flex justify-around">
 					<a href="{{route('admin.user.show',$user->id)}}"><span class="fa fa-eye text-success"></span></a>
 					<a data-toggle="modal" data-target="#editUser{{$user->id}}"><span class="fa fa-edit text-primary"></span><a>
@@ -184,6 +185,7 @@
 
 					<a href="{{route('admin.users.destroy',$user->id)}}" ><span class="fa fa-trash text-danger"></span></a>
 				</td>
+        
 			</tr>
 			@endforeach
 		</tbody>
